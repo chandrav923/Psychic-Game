@@ -2,30 +2,44 @@ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
 
 	var wins = 0;
 	var losses = 0;
-	var guessesLeft = ["9", "8", "7", "6", "5", "4", "3", "2", "1"];
-	var guessesSoFar = [string];	
-	var totalGuesses = 9;
-
-
-
-	document.onkeyup = function(event){
-
-		var userGuess = event.key;
-		var guessesSoFar = event.key;
+	var guessesLeft = 9;
+	var guessesSoFar = [];
+		var totalGuesses = 9;
+	
+	
+	
+		document.onkeyup = function(event){
+	
+			var userGuess = event.key;
+			guessesSoFar += (userGuess) + (" ");
 		var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+		
 
 		if ((userGuess) === (computerGuess)){
-			wins++ && guessesLeft--;
+			wins+=1;
+			newGame();
 		}
+
+		console.log(computerGuess)
 
 		if ((userGuess) !== (computerGuess)) {
-			losses++ & guessesLeft --;
+			guessesLeft --;
+			if ((guessesLeft) == 0) {
+				losses+= 1;
+				newGame();
+				
+
+			}
+			
+
+
 		}
 
-		if  ((var guessesLeft) == 9){
-			guessesLeft--;
-		}
-
+		function newGame() {
+  			guessesLeft = 10;
+  			guessesSoFar = [];
+  			computerGuess = computerChoices[Math.floor(Math.random() * arrayOfLetters.length)];
+}
 
 	 html = 
 			"<p>Wins:" + wins + "</p>" +
